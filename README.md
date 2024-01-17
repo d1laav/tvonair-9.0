@@ -1,1 +1,1 @@
-# 10 februari kalo bisa uda di kumpul
+# 10 februari kalo bisa uda pada kumpul
