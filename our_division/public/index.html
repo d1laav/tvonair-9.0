@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>coba tailwind</title>
+  <link rel="stylesheet" href="css/style.css">
+  <!-- Font Awesome CDN Link for Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"/>
+  <script src="script.js" defer></script>
+  <!-- Include the Google Fonts link directly in the HTML head -->
+  <style>
+    @import url('https://fonts.googleapis.com/css?family=Poppins:400,700,900');
+  </style>  
+  <!-- MDI Icons -->
+  <link rel="stylesheet" href="https://cdn.materialdesignicons.com/6.5.95/css/materialdesignicons.min.css" />
+</head>
+<body>
+
+<!-- category box -->
+<div class="badan">
+  <div class="wrapper">
+    <div class="icon"><i id="left" class="fa-solid fa-angle-left"></i></div>
+    <ul class="tabs-box" id="categoryTabs">
+      <li class="tab" onclick="showTeamMembers('Visual')">Visual</li>
+      <li class="tab active" onclick="showTeamMembers('Sponsor')">Sponsor</li>
+      <li class="tab" onclick="showTeamMembers('Media_Relation')">Media Relation</li>
+      <li class="tab" onclick="showTeamMembers('Logistic')">Logistic</li>
+      <li class="tab" onclick="showTeamMembers('IT')">IT</li>
+      <li class="tab" onclick="showTeamMembers('Publikasi')">Publikasi</li>
+      <li class="tab" onclick="showTeamMembers('Fresh_Money')">Fresh Money</li>
+      <li class="tab" onclick="showTeamMembers('Event')">Event</li>
+      <li class="tab" onclick="showTeamMembers('BPH')">BPH</li>
+      <li class="tab" onclick="showTeamMembers('Documentation')">Documentation</li>
+
+      <!-- Add other categories here -->
+    </ul>
+    <div class="icon"><i id="right" class="fa-solid fa-angle-right"></i></div>
+  </div>
+</div>
+
+<!-- Page Container -->
+<div class="flex min-h-screen items-center justify-center bg-white py-48">
+  <div class="flex flex-col">
+    <div class="mt-8 flex flex-col">
+      <!-- Meet the Team -->
+      <div class="container max-w-7xl px-4">
+        <!-- Section Header -->
+        <div class="mb-24 flex flex-wrap justify-center text-center">
+          <div class="w-full px-4 lg:w-6/12">
+            <!-- Header -->
+            <h1 id="categoryTitle" class="mb-8 text-4xl font-bold text-gray-900">Meet the Team</h1>
+
+            <!-- Description -->
+            <p id="categoryDescription" class="text-lg font-light text-gray-700">With over 100 years of combined experience, we've got a well-seasoned team at the helm.</p>
+          </div>
+        </div>
+
+        <!-- Team Members -->
+        <div class="flex flex-wrap" id="teamMembers">
+          <!-- Team members will be dynamically added here based on the selected category -->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  const teamData = {
+    Visual: [
+      { name: 'Tranter Jaskulski', title: 'Founder & Specialist' },
+      { name: 'Abigail', title: 'Founder & Specialist' },
+      { name: ' Jaskulski', title: 'Founder & Specialist' },
+      { name: 'Alison Jaskulski', title: 'Founder & Specialist' },
+      { name: 'Amanda Jaskulski', title: 'Founder & Specialist' },
+      { name: 'Amelia Jaskulski', title: 'Founder & Specialist' },
+      { name: 'Amy Jaskulski', title: 'Founder & Specialist' },
+      { name: 'Andrea Jaskulski', title: 'Founder & Specialist' },
+    ],
+    Sponsor: [
+      { name: 'Anna Jagna', title: 'Tired & M. Specialist' },
+      { name: 'Audrey Jagna', title: 'Tired & M. Specialist' },
+      { name: 'Ava Jagna', title: 'Tired & M. Specialist' },
+      { name: 'Bernadette Jagna', title: 'Tired & M. Specialist' },
+      { name: 'Carol Jagna', title: 'Tired & M. Specialist' },
+      { name: 'Chloe Jagna', title: 'Tired & M. Specialist' },
+      { name: 'Caroline Jagna', title: 'Tired & M. Specialist' },
+      { name: 'Diane Jagna', title: 'Tired & M. Specialist' },
+      // Add more team members for 'javascript' category
+    ],
+    Media_Relation: [
+      { name: 'Kenji Milton', title: 'Team Member' },
+      { name: 'Kenji Milton', title: 'Team Member' },
+      { name: 'Kenji Milton', title: 'Team Member' },
+      { name: 'Kenji Milton', title: 'Team Member' },
+      { name: 'Kenji Milton', title: 'Team Member' },
+      { name: 'Kenji Milton', title: 'Team Member' },
+      { name: 'Kenji Milton', title: 'Team Member' },
+      { name: 'Kenji Milton', title: 'Team Member' },
+      // Add more team members for 'podcast' category
+    ],
+    Logistic: [
+      { name: 'jhoni endul', title: 'Team Member' },
+      { name: 'jhoni endul', title: 'Team Member' },
+      { name: 'jhoni endul', title: 'Team Member' },
+      { name: 'jhoni endul', title: 'Team Member' },
+      { name: 'jhoni endul', title: 'Team Member' },
+      { name: 'jhoni endul', title: 'Team Member' },
+      { name: 'jhoni endul', title: 'Team Member' },
+
+      // Add more team members for 'podcast' category
+    ],
+    IT: [
+      { name: 'adek jhoni', title: 'Team Member' },
+      { name: 'adek jhoni', title: 'Team Member' },
+      { name: 'adek jhoni', title: 'Team Member' },
+      { name: 'adek jhoni', title: 'Team Member' },
+      { name: 'adek jhoni', title: 'Team Member' },
+      { name: 'adek jhoni', title: 'Team Member' },
+      { name: 'adek jhoni', title: 'Team Member' },
+      { name: 'adek jhoni', title: 'Team Member' },
+    
+    ],
+    Publikasi: [
+      { name: 'caleb dinoto', title: 'Team Member' },
+      { name: 'caleb dinoto', title: 'Team Member' },
+      { name: 'caleb dinoto', title: 'Team Member' },
+      { name: 'caleb dinoto', title: 'Team Member' },
+      { name: 'caleb dinoto', title: 'Team Member' },
+      { name: 'caleb dinoto', title: 'Team Member' },
+      { name: 'caleb dinoto', title: 'Team Member' },
+      { name: 'caleb dinoto', title: 'Team Member' },
+      
+    ],
+    Fresh_Money: [
+      { name: 'alfred tambayong', title: 'Team Member' },
+      { name: 'alfred tambayong', title: 'Team Member' },
+      { name: 'alfred tambayong', title: 'Team Member' },
+      { name: 'alfred tambayong', title: 'Team Member' },
+      { name: 'alfred tambayong', title: 'Team Member' },
+      { name: 'alfred tambayong', title: 'Team Member' },
+
+      // Add more team members for 'podcast' category
+    ],
+    Event: [
+      { name: 'Kenneth ohy', title: 'Team Member' },
+      { name: 'Kenneth ohy', title: 'Team Member' },
+      { name: 'Kenneth ohy', title: 'Team Member' },
+      { name: 'Kenneth ohy', title: 'Team Member' },
+      { name: 'Kenneth ohy', title: 'Team Member' },
+      { name: 'Kenneth ohy', title: 'Team Member' },
+
+      // Add more team members for 'podcast' category
+    ],
+    BPH: [
+      { name: 'kambuhnya', title: 'Team Member' },
+      { name: 'kambuhnya', title: 'Team Member' },
+      { name: 'kambuhnya', title: 'Team Member' },
+      { name: 'kambuhnya', title: 'Team Member' },
+      { name: 'kambuhnya', title: 'Team Member' },
+      { name: 'kambuhnya', title: 'Team Member' },
+      { name: 'kambuhnya', title: 'Team Member' },
+
+      // Add more team members for 'podcast' category
+    ],Documentation: [
+      { name: 'muhammad christian ', title: 'Team Member' },
+      { name: 'muhammad christian ', title: 'Team Member' },
+      { name: 'muhammad christian ', title: 'Team Member' },
+      { name: 'muhammad christian ', title: 'Team Member' },
+      { name: 'muhammad christian ', title: 'Team Member' },
+      { name: 'muhammad christian ', title: 'Team Member' },
+
+      // Add more team members for 'podcast' category
+    ],
+    // Add more categories and team members as needed
+  };
+
+  async function showTeamMembers(category) {
+    const teamMembersContainer = document.getElementById('teamMembers');
+    const selectedCategory = teamData[category] || [];
+
+    teamMembersContainer.innerHTML = '';
+
+    for (const member of selectedCategory) {
+      const memberElement = `
+        <div class="mb-6 w-full px-6 sm:px-6 md:w-6/12 lg:w-3/12 lg:px-4">
+          <div class="flex flex-col">
+            <a href="#">
+              <img class="rounded-lg drop-shadow-md transition-all delay-100 duration-200 hover:drop-shadow-xl" src="${getRandomImageURL()}" width="400" height="400" />
+            </a>
+            <div class="mt-6 text-center">
+              <h1 class="mb-1 text-xl font-bold text-gray-900">${member.name}</h1>
+              <div class="mb-2 font-light text-gray-700">${member.title}</div>
+            </div>
+          </div>
+        </div>
+      `;
+
+      teamMembersContainer.innerHTML += memberElement;
+    }
+
+    updateCategoryHeader(category);
+  }
+
+  function updateCategoryHeader(category) {
+    const categoryTitle = document.getElementById('categoryTitle');
+    const categoryDescription = document.getElementById('categoryDescription');
+
+    // Update title and description based on the selected category
+    switch (category) {
+      case 'Visual':
+        categoryTitle.innerText = 'Meet the visual studio code Team';
+        categoryDescription.innerText = 'Our coding team is ready to tackle any software development website.';
+        break;
+      case 'Sponsor':
+        categoryTitle.innerText = 'Meet the sponsor Team';
+        categoryDescription.innerText = 'Our JavaScript experts are passionate about building interactive web applications.';
+        break;
+      case 'Media_Relation':
+        categoryTitle.innerText = 'Meet the Media Relation Team';
+        categoryDescription.innerText = 'Get to know the voices behind our insightful and entertaining podcasts.';
+        break;
+        case 'Logistic':
+        categoryTitle.innerText = 'Meet the Logistic Team';
+        categoryDescription.innerText = 'Get to know the voices behind our insightful and entertaining podcasts.';
+        break;
+        case 'IT':
+        categoryTitle.innerText = 'Meet the IT Team';
+        categoryDescription.innerText = 'Get to know the voices behind our insightful and entertaining podcasts.';
+        break;
+        case 'Publikasi':
+        categoryTitle.innerText = 'Meet the Publikasi Team';
+        categoryDescription.innerText = 'Get to know the voices behind our insightful and entertaining podcasts.';
+        break;
+        case 'Fresh_Money':
+        categoryTitle.innerText = 'Meet the Fresh Money Team';
+        categoryDescription.innerText = 'Get to know the voices behind our insightful and entertaining podcasts.';
+        break;
+        case 'Event':
+        categoryTitle.innerText = 'Meet the Event Team';
+        categoryDescription.innerText = 'Get to know the voices behind our insightful and entertaining podcasts.';
+        break;
+        case 'BPH':
+        categoryTitle.innerText = 'Meet the BPH Team';
+        categoryDescription.innerText = 'Get to know the voices behind our insightful and entertaining podcasts.';
+        break;
+        case 'Documentation':
+        categoryTitle.innerText = 'Meet the Documentation Team';
+        categoryDescription.innerText = 'Get to know the voices behind our insightful and entertaining podcasts.';
+        break;
+      // Add more cases for other categories
+      default:
+        categoryTitle.innerText = 'Meet the Team';
+        categoryDescription.innerText = 'With over 100 years of combined experience, we\'ve got a well-seasoned team at the helm.';
+    }
+  }
+
+  function getRandomImageURL() {
+    const imageBaseURL = 'https://source.unsplash.com/400x400/?team';
+    return `${imageBaseURL}`;
+  }
+
+  // Initially load the default category (javascript)
+  showTeamMembers('javascript');
+</script>
+
+</body>
+</html>
