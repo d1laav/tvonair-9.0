@@ -1,0 +1,22 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base{
+    @font-face {
+        font-family: 'ITC Franklin Gothic LT W04 Hv' ;
+        src: url('../font/ITC Franklin Gothic LT W04 Hv.woff') format('woff');
+    }
+    h1{
+        font-family: ITC Franklin Gothic LT W04 Hv;
+    }
+}   
+
+.stroke {
+    -webkit-text-stroke-width: 2px;
+    -webkit-text-stroke-color: #0a038c;
+    }
+
+h1{
+    font-size: 9vw;
+}
