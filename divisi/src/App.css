@@ -1,0 +1,47 @@
+
+
+
+
+
+//menu
+
+/* *{
+  
+  padding: auto;.
+  font-family: 'Poppins', sans-serif;
+} */
+ 
+.icon:first-child {
+  background: linear-gradient(90deg, #fff 70%, transparent);
+}
+.icon:last-child {
+  background: linear-gradient(-90deg, #fff 70%, transparent);
+} 
+.icon i {
+  line-height: 55px;
+  border-radius: 50%;
+}
+.wrapper .tabs-box {
+  gap: 12px;
+  list-style: none;
+  scroll-behavior: smooth;
+}
+.tabs-box.dragging {
+  scroll-behavior: auto;
+  cursor: grab;
+}
+.tabs-box .tab {
+  cursor: pointer;
+  font-size: 0.7rem;
+  white-space: nowrap;
+  background: #f5f4fd;
+  padding: 11px 20px;
+  border-radius: 30px;
+  border: 1px solid #d8d5f2;
+}
+
+.tabs-box .tab.active{
+  color: #fff;
+  background: #5372F0;
+  border-color: transparent;
+} 
