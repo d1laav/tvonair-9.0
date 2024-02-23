@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import './App.css'; // Assuming this is your custom CSS file
 
 
@@ -114,21 +114,72 @@ const getRandomImageLink = () => {
   return imageLinks[Math.floor(Math.random() * imageLinks.length)];
 };
 
-const App = () => {
+const App = () => 
+  {const tabsBoxRef = useRef(null);
+  const [isDragging, setIsDragging] = useState(false);
+
+  const handleIcons = () => {
+    const tabsBox = tabsBoxRef.current;
+    if (!tabsBox) return;
+
+    const arrowIcons = tabsBox.parentElement.querySelectorAll('.icon');
+    if (!arrowIcons || arrowIcons.length !== 2) return;
+
+    const maxScrollableWidth = tabsBox.scrollWidth - tabsBox.clientWidth;
+    arrowIcons[0].style.display = tabsBox.scrollLeft <= 0 ? 'none' : 'flex';
+    arrowIcons[1].style.display = maxScrollableWidth - tabsBox.scrollLeft <= 1 ? 'none' : 'flex';
+  };
+
   useEffect(() => {
-   
-    // Initially load the default category ('Visual')
-    showTeamMembers('Visual');
+    const tabsBox = tabsBoxRef.current;
+    if (!tabsBox) return;
+
+    tabsBox.addEventListener('scroll', handleIcons);
+
+    return () => {
+      tabsBox.removeEventListener('scroll', handleIcons);
+    };
   }, []);
+
+  const handleDragStart = () => {
+    setIsDragging(true);
+  };
+
+  const handleDragEnd = () => {
+    setIsDragging(false);
+  };
+
+  const handleArrowClick = (direction) => {
+    const tabsBox = tabsBoxRef.current;
+    if (!tabsBox) return;
+
+    tabsBox.scrollLeft += direction === 'left' ? -340 : 340;
+    handleIcons(); // Update arrow visibility
+  };
 
   return (
     <div>
-      <div className="menu flex items-center justify-center py-auto px-auto">
-        <div className="wrapper p-8 relative overflow-x-hidden max-w-screen-md mx-auto bg-white rounded-lg">
-          <div className="icon absolute top-0 left-0 h-full w-32 flex items-center ml-4 hidden "><i id="left" className="fa-solid fa-angle-left w-12 h-12 cursor-pointer text-xl text-center hover:bg-gray-200"></i></div>
-          <ul className="tabs-box dragging:select-none dragging:pointer-events-none flex overflow-x-hidden" id="categoryTabs">
-            <li className="tab " onClick={() => showTeamMembers('Visual')}>Visual</li>
-            <li className="tab active " onClick={() => showTeamMembers('Sponsor')}>Sponsor</li>
+       <meta charSet="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Our Division</title>
+  <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet" />
+  {/* Font Awesome CDN Link for Icons */}
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" />
+  {/* Include the Google Fonts link directly in the HTML head */}
+  <style dangerouslySetInnerHTML={{__html: "\nimport url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');\n\n" }} />
+  {/* MDI Icons */}
+  <link rel="stylesheet" href="https://cdn.materialdesignicons.com/6.5.95/css/materialdesignicons.min.css" />
+
+
+
+ <div className="menu flex items-center justify-center py-auto px-auto">
+      <div className="wrapper p-8 relative overflow-x-hidden max-w-screen-md mx-auto bg-white rounded-lg">
+        <div className="icon absolute top-0 left-0 h-full w-32 flex items-center ml-4" onClick={() => handleArrowClick('left')}>
+          <i className="fa-solid fa-angle-left w-12 h-12 cursor-pointer text-xl text-center hover:bg-gray-200"></i>
+        </div>
+        <ul className="tabs-box dragging:select-none dragging:pointer-events-none flex overflow-x-hidden" id="categoryTabs" ref={tabsBoxRef} onMouseDown={handleDragStart} onMouseUp={handleDragEnd}>
+        <li className="tab " onClick={() => showTeamMembers('Visual')}>Visual</li>
+            <li className="tab " onClick={() => showTeamMembers('Sponsor')}>Sponsor</li>
             <li className="tab" onClick={() => showTeamMembers('Media_Relation')}>Media Relation</li>
             <li className="tab" onClick={() => showTeamMembers('Logistic')}>Logistic</li>
             <li className="tab" onClick={() => showTeamMembers('IT')}>IT</li>
@@ -138,11 +189,13 @@ const App = () => {
             <li className="tab" onClick={() => showTeamMembers('BPH')}>BPH</li>
             <li className="tab" onClick={() => showTeamMembers('Documentation')}>Documentation</li>
             {/* Add other categories here */}
-          </ul>
-          <div className="icon absolute top-0 right-0 h-full w-32 flex items-center mr-4 justify-end"><i id="right" className="fa-solid fa-angle-right w-12 h-12 cursor-pointer text-xl text-center hover:bg-gray-200 "></i></div>
+        </ul>
+        <div className="icon absolute top-0 right-0 h-full w-32 flex items-center mr-4 justify-end" onClick={() => handleArrowClick('right')}>
+          <i className="fa-solid fa-angle-right w-12 h-12 cursor-pointer text-xl text-center hover:bg-gray-200 "></i>
         </div>
       </div>
-
+    </div>
+  
       {/*anggota divisi */}
       <section className="text-gray-600 body-font">
         <div className="container px-5 py-24 mx-auto">

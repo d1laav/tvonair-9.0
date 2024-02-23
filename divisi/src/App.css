@@ -3,13 +3,15 @@
 
 
 
-//menu
-
-/* *{
-  
-  padding: auto;.
+//men
+* {
+  padding: auto;
   font-family: 'Poppins', sans-serif;
-} */
+}
+ 
+.icon {
+  display: none; /* Initially hide the arrow icons */
+}
  
 .icon:first-child {
   background: linear-gradient(90deg, #fff 70%, transparent);
