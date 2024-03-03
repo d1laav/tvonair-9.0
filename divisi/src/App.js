@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import './App.css'; // Assuming this is your custom CSS file
+import './App.css'; //  custom CSS file
 
 
 const teamData = {
