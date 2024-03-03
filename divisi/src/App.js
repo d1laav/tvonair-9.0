@@ -199,6 +199,7 @@ const App = () => {
             <li className={`tab ${activeTab === 'Documentation' ? 'active' : ''}`} onClick={() => showTeamMembers('Documentation')}>Documentation</li>
             <li className={`tab ${activeTab === 'Secmin_1' ? 'active' : ''}`} onClick={() => showTeamMembers('Secmin_1')}>Secmin 1</li>
             <li className={`tab ${activeTab === 'Secmin_2' ? 'active' : ''}`} onClick={() => showTeamMembers('Secmin_2')}>Secmin 2</li>
+            
             {/* Add other tabs */}
           </ul>
           <div className="icon absolute top-0 right-0 h-full w-32 flex items-center mr-4 justify-end" onClick={() => handleArrowClick('right')}>
